@@ -1,0 +1,96 @@
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>בואו נתרגל שיחה!</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+  <!-- Add pdfmake scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+  <script>
+    window.onload = function() {
+      window.speechSynthesis.getVoices();
+    };
+  </script>
+</head>
+<body>
+  <div id="game-container">
+    <button id="back-home-btn" class="back-home-btn">
+      🏠 <span>חזור לדף הבית</span>
+    </button>
+    <div id="language-select-screen" class="screen active">
+      <h1>בחר/י שפה לתרגול 🌍</h1>
+      <div class="language-buttons">
+        <button class="language-btn" data-language="hebrew">🇮🇱 עברית</button>
+        <button class="language-btn" data-language="arabic">🇸🇦 عربية</button>
+        <button class="language-btn" data-language="english">🇺🇸 English</button>
+        <button class="language-btn" data-language="italian">🇮🇹 Italiano</button>
+      </div>
+    </div>
+
+    <div id="welcome-screen" class="screen">
+      <h1 id="welcome-title">בואו נדבר! 🗣️</h1>
+      <div class="form-group">
+        <label for="name" id="name-label">איך קוראים לך?</label>
+        <input type="text" id="name" required>
+      </div>
+      <div class="form-group">
+        <label id="gender-label">מה המגדר שלך?</label>
+        <div class="gender-buttons">
+          <button class="gender-btn" data-gender="boy">👦 בן</button>
+          <button class="gender-btn" data-gender="girl">👧 בת</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="topics-screen" class="screen">
+      <h2><span id="topics-greeting"></span> <span id="player-name"></span>!</h2>
+      <div class="topics-grid">
+        <button class="topic-btn" data-topic="family">👥 <span class="topic-text">משפחה ויחסים</span></button>
+        <button class="topic-btn" data-topic="hobbies">🎭 <span class="topic-text">תחביבים ובילויים</span></button>
+        <button class="topic-btn" data-topic="school">🎓 <span class="topic-text">לימודים ועתיד</span></button>
+        <button class="topic-btn" data-topic="society">🌐 <span class="topic-text">חברה ותרבות</span></button>
+        <button class="topic-btn" data-topic="technology">💻 <span class="topic-text">טכנולוגיה ומדע</span></button>
+        <button class="topic-btn" data-topic="environment">🌍 <span class="topic-text">סביבה וקיימות</span></button>
+      </div>
+    </div>
+
+    <div id="conversation-screen" class="screen">
+      <div class="conversation-container">
+        <div id="chat-history"></div>
+        <div class="control-panel">
+          <button id="start-speaking" class="control-btn">🎤 <span id="start-recording-text">התחל להקליט</span></button>
+          <button id="stop-speaking" class="control-btn" disabled>⏹️ <span id="stop-recording-text">עצור</span></button>
+          <input type="text" id="text-input">
+          <button id="send-text" class="control-btn">📤 <span id="send-text-text">שלח</span></button>
+        </div>
+      </div>
+      <div class="corrections-panel">
+        <h3 id="corrections-title">הערות לשיפור 📝</h3>
+        <button class="export-btn" id="export-corrections-btn">
+          <svg viewBox="0 0 24 24">
+            <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+          </svg>
+          <span>הורד כ-PDF</span>
+        </button>
+        <div id="corrections-list"></div>
+      </div>
+    </div>
+    <button id="vocab-btn" class="vocab-btn">📚 אוצר מילים</button>
+    <div id="vocab-overlay" class="vocab-overlay"></div>
+    <div id="vocab-window" class="vocab-window">
+      <button id="vocab-close" class="vocab-close">×</button>
+      <h2>אוצר מילים חדש</h2>
+      <button class="export-btn" id="export-vocab-btn">
+        <svg viewBox="0 0 24 24">
+          <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+        </svg>
+        <span>הורד כ-PDF</span>
+      </button>
+      <div id="vocab-list"></div>
+    </div>
+  </div>
+  <script src="main.js" type="module"></script>
+</body>
+</html>
